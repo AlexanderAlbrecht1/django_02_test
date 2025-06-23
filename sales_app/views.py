@@ -7,3 +7,11 @@ from .models import Customer
 class CustomerListView(ListView):
     model = Customer
     template_name = "sales/list.html"
+    paginate_by = 10
+
+class CustomerListSearchView(CustomerListView):
+     def get_queryset(self):
+        name = self.kwargs.get('name')
+        return Customer.objects.filter(first_name__icontains=name)
+
+    
