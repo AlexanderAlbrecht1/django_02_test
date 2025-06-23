@@ -6,10 +6,8 @@ from .models import Customer, Bill, Product, ProductType, Order
 
 class CustomerAdmin(admin.ModelAdmin):
     list_filter=['first_name', 'last_name']
-    # list_display=['last_name', 'account','slug']
     readonly_fields=['account']
 
-    prepopulated_fields={'slug':['first_name', 'last_name']}
 
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Bill)
